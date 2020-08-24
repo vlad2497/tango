@@ -7,10 +7,8 @@ import {
   SET_TICKETS_ERROR,
 } from "./selectors";
 import { IState, IListItem } from "./reducer";
-import {
-  getTicketsList as _getTicketsList,
-  ITicketItem,
-} from "./../../../externalAPI/tickets/index";
+import { getTicketsList as _getTicketsList } from "./../../../externalAPI/tickets/index";
+import { ITicket } from "./../../../interfaces/ITicket";
 
 //actions creators
 export const setTicketsList = (payload: IState["list"]) => ({
@@ -35,20 +33,8 @@ export const getTicketsList = (
   return async (dispatch: any) => {
     try {
       dispatch(setTicketsLoading(true));
-      const list: ITicketItem[] = await _getTicketsList(bar_code);
-      const newList: IState["list"] = [
-        ...list.map(
-          (item: ITicketItem): IListItem => {
-            const newItem: IListItem = {
-              title: item.type.name,
-              endDate: item.ticket.ticket_end_date,
-              lessonsLeft: item.lessons_left,
-              lessonsCount: item.ticket.ticketCount.lessons_count,
-            };
-            return newItem;
-          }
-        ),
-      ];
+      const list: ITicket[] = await _getTicketsList(bar_code);
+      const newList: IState["list"] = processTickets(list);
       dispatch(setTicketsList(newList));
       dispatch(setTicketsLoading(false));
     } catch (error) {
@@ -57,4 +43,21 @@ export const getTicketsList = (
       dispatch(setTicketsLoading(false));
     }
   };
+};
+
+const processTickets = (tickets: ITicket[]): IState["list"] => {
+  const newList: IState["list"] = [
+    ...tickets.map(
+      (item: ITicket): IListItem => {
+        const newItem: IListItem = {
+          title: item.type.name,
+          endDate: item.ticket.ticket_end_date,
+          lessonsLeft: item.lessons_left,
+          lessonsCount: item.ticket.ticketCount.lessons_count,
+        };
+        return newItem;
+      }
+    ),
+  ];
+  return newList;
 };

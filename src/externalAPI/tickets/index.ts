@@ -1,22 +1,10 @@
 import axios from "axios";
 import { serverHost } from "../index";
-
-export interface ITicketItem {
-  lessons_left: number;
-  type: {
-    name: string;
-  };
-  ticket: {
-    ticket_end_date: string;
-    ticketCount: {
-      lessons_count: number;
-    };
-  };
-}
+import { ITicket } from "./../../interfaces/ITicket";
 
 interface ITicketsListResponse {
   data: {
-    tickets: ITicketItem[];
+    tickets: ITicket[];
   };
 }
 

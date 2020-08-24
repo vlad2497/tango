@@ -26,4 +26,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       },
     },
   },
+  fullWidth: {
+    width: "100%",
+  },
 }));

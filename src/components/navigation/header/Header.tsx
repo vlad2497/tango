@@ -5,9 +5,12 @@ import { Grid } from "@material-ui/core";
 import { Button } from "../../ui";
 //Styles
 import { useStyles } from "./styles";
+import { useSelector } from "../../../store/modules/rootReducer";
 
 const Header: React.FC = () => {
   const classes = useStyles();
+  const auth = useSelector((state) => state.auth);
+
   return (
     <Grid
       container
@@ -15,11 +18,13 @@ const Header: React.FC = () => {
       className={classes.container}
       alignItems="center"
     >
-      <Grid item sm={6}>
+      <Grid item xs={6}>
         <img src="/images/header/logo.svg" alt="logo" />
       </Grid>
-      <Grid container justify="flex-end" item sm={6}>
-        <Button text={"Войти"} size="small" color="dark" onClick={() => {}} />
+      <Grid container justify="flex-end" item xs={6}>
+        {auth?.info?.token && (
+          <Button text="Выйти" size="small" color="dark" onClick={() => {}} />
+        )}
       </Grid>
     </Grid>
   );

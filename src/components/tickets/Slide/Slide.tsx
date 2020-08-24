@@ -6,6 +6,14 @@ import { format, parseISO } from "date-fns";
 import { useStyles } from "./styles";
 import { IListItem } from "../../../store/modules/tickets/reducer";
 
+const getColor = (color: number): string => {
+  return color === 0 || color === 1
+    ? "linear-gradient(180deg, #F57A11 0%, #E72121 100%);"
+    : color === 2 || color === 3
+    ? "linear-gradient(180deg, #F5BF06 0%, #F48809 100%);"
+    : "linear-gradient(180deg, #68C126 0%, #1E950E 100%)";
+};
+
 interface IProps extends IListItem {}
 
 const Slide: React.FC<IProps> = ({
@@ -14,12 +22,7 @@ const Slide: React.FC<IProps> = ({
   lessonsLeft,
   lessonsCount,
 }) => {
-  const color =
-    lessonsLeft === 0 || lessonsLeft === 1
-      ? "red"
-      : lessonsLeft === 2 || lessonsLeft === 3
-      ? "yellow"
-      : "linear-gradient(180deg, #68C126 0%, #1E950E 100%)";
+  const color = getColor(lessonsLeft);
   const classes = useStyles({ color });
 
   return (

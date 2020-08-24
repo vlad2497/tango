@@ -54,6 +54,7 @@ const getColors = (color: string) => {
 
 export const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   root: (props) => ({
+    fontFamily: "Roboto",
     borderRadius: 16,
     textAlign: "center",
     border: "none",

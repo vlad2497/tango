@@ -1,11 +1,17 @@
 //Core
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 //Custom
 import { Carousel, PageProgress } from "../ui";
 import Slide from "./Slide";
 import { useSelector } from "../../store/modules/rootReducer";
 import { getTicketsList } from "../../store/modules/tickets";
+
+const carouselBreakpoints = {
+  0: 1,
+  786: 2,
+  1530: 3,
+};
 
 const Tickets: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,14 +21,16 @@ const Tickets: React.FC = () => {
     dispatch(getTicketsList("32"));
   }, [dispatch]);
 
-  const getSlide = useCallback((slide) => {
-    return <Slide {...slide} />;
-  }, []);
-
   if (loading) return <PageProgress height={160} />;
   if (!list) return null;
 
-  return <Carousel slides={list} getSlide={getSlide} />;
+  return (
+    <Carousel
+      slides={list}
+      SlideComponent={Slide}
+      breakpoints={carouselBreakpoints}
+    />
+  );
 };
 
 export default Tickets;

@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 20,
   },
   title: {
-    //fontFamily: Roboto,
+    fontFamily: "Roboto",
     fontWeight: 500,
     fontSize: 18,
     lineHeight: "21px",
@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: 24,
   },
   info: {
-    //fontFamily: Roboto,
+    fontFamily: "Roboto",
     fontSize: 14,
     lineHeight: "16px",
     color: "#7A79A5",

@@ -16,6 +16,7 @@ export const useStyles = makeStyles<Theme>((theme) => ({
     },
     "& .MuiInputBase-input": {
       color: "#7A79A5",
+      fontFamily: "Roboto",
     },
   },
 }));

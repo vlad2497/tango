@@ -1,7 +1,8 @@
 //Core
 import React from "react";
 //Custom
-//import { Carousel } from "../../components/ui";
+import Lessons from "./../../components/announces/lessons/Lessons";
+import Events from "./../../components/announces/events/Events";
 //Styles
 import { useStyles } from "./styles";
 
@@ -10,9 +11,10 @@ const Main: React.FC = () => {
   return (
     <>
       <div className={classes.title}>Расписание уроков</div>
-      {/*<Carousel />*/}
+      <Lessons />
       <div className={classes.title}>Расписание мероприятий</div>
-      {/*<Carousel />*/}
+      <Events />
+      <div className={classes.footer}></div>
     </>
   );
 };

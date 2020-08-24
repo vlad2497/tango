@@ -13,7 +13,7 @@ const App: React.FC = () => {
   const { info } = useSelector((state) => state.auth);
   return (
     <Grid container justify="center">
-      <Grid item sm={9}>
+      <Grid item xs={9}>
         <Header />
         {info?.token ? <Tickets /> : <AuthForm />}
         <Switch>
