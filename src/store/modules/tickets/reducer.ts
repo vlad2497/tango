@@ -3,16 +3,10 @@ import {
   SET_TICKETS_LOADING,
   SET_TICKETS_ERROR,
 } from "./selectors";
-
-export interface IListItem {
-  title: string;
-  endDate: string;
-  lessonsLeft: number;
-  lessonsCount: number;
-}
+import { ITicket } from "./../../../interfaces/ITicket";
 
 export interface IState {
-  list: IListItem[] | null;
+  list: ITicket[] | null;
   loading: boolean;
   error: string | null;
 }

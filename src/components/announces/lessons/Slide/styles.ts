@@ -25,6 +25,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     marginBottom: 16,
     width: 83,
+    padding: 4,
   },
   title: {
     fontFamily: "Roboto",

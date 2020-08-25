@@ -4,20 +4,20 @@ import { ITicket } from "./../../interfaces/ITicket";
 
 interface ITicketsListResponse {
   data: {
-    tickets: ITicket[];
+    data: ITicket[];
   };
 }
 
-export const getTicketsList = async (bar_code: string) => {
+export const getTicketsList = async () => {
   const response: ITicketsListResponse = await axios.get(
-    `${serverHost}/api/student/protected/info?barcode_id=${bar_code}`,
+    `${serverHost}/api/student/protected/info`,
     {
       headers: { "Content-Type": "application/json" },
     }
   );
 
   return [
-    ...response.data.tickets,
+    ...response.data.data,
     {
       id: 57,
       lessons_left: 3,

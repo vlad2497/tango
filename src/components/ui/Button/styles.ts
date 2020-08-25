@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Theme } from "@material-ui/core";
 
 export interface StyleProps {
-  color: "blue" | "dark";
+  color: "blue" | "dark" | "white";
   size: "small" | "medium";
 }
 
@@ -13,7 +13,6 @@ const getSize = (size: string) => {
         width: 94,
         height: 36,
         lineHeight: "36px",
-        border: "1px solid #7A79A5",
       };
     case "medium":
       return {
@@ -41,10 +40,20 @@ const getColors = (color: string) => {
       return {
         color: "#7A79A5",
         backgroundColor: "#333253",
+        border: "1px solid #7A79A5",
         "&:hover": {
           cursor: "pointer",
           backgroundColor: "#1CA8F3",
           color: "white",
+        },
+      };
+    case "white":
+      return {
+        color: "#1CA8F3",
+        backgroundColor: "transparent",
+        "&:hover": {
+          cursor: "pointer",
+          color: "#37B9FF",
         },
       };
     default:

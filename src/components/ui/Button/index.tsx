@@ -5,7 +5,7 @@ import { useStyles } from "./styles";
 
 interface IProps {
   size: "small" | "medium";
-  color: "blue" | "dark";
+  color: "blue" | "dark" | "white";
   text: string;
   onClick: () => void;
 }

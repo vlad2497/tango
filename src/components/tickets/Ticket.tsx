@@ -18,11 +18,11 @@ const Tickets: React.FC = () => {
   const { list, loading } = useSelector((state) => state.tickets);
 
   useEffect(() => {
-    dispatch(getTicketsList("32"));
+    dispatch(getTicketsList());
   }, [dispatch]);
 
   if (loading) return <PageProgress height={160} />;
-  if (!list) return null;
+  if (!list || !list.length) return null;
 
   return (
     <Carousel

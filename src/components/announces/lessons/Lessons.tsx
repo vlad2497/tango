@@ -5,8 +5,8 @@ import { useDispatch } from "react-redux";
 import { Carousel, PageProgress } from "../../ui";
 import { getLessonAnnounces } from "../../../store/modules/lessonAnnounces";
 import { useSelector } from "../../../store/modules/rootReducer";
-import useFormatDate from "./hooks/useFormatDate";
 import Slide from "./Slide";
+import NotAnnounces from "./../notAnnounces/NotAnnounces";
 
 const carouselBreakpoints = {
   0: 1,
@@ -17,17 +17,18 @@ const carouselBreakpoints = {
 const Lessons: React.FC = () => {
   const dispatch = useDispatch();
   const { list, loading } = useSelector((state) => state.lessonAnnounces);
-  const { formatedList } = useFormatDate(list);
 
   useEffect(() => {
     dispatch(getLessonAnnounces());
   }, [dispatch]);
 
   if (loading) return <PageProgress height={80} />;
+  if (!list || !list.length)
+    return <NotAnnounces text="Ближайших уроков нет" />;
 
   return (
     <Carousel
-      slides={formatedList}
+      slides={list}
       SlideComponent={Slide}
       breakpoints={carouselBreakpoints}
     />

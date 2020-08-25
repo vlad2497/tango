@@ -1,4 +1,4 @@
-export const serverHost = "http://tango";
+export const serverHost = "http://192.168.56.1";
 
 export interface IRequestError {
   data: {
