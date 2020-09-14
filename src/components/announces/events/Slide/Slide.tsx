@@ -5,7 +5,6 @@ import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 //Custom
 import { IEventAnnounce } from "./../../../../interfaces/IEventAnnounce";
-import { serverHost } from "./../../../../externalAPI/index";
 //Styles
 import { useStyles } from "./styles";
 
@@ -29,7 +28,7 @@ const Slide: React.FC<IProps> = ({
   image,
 }) => {
   const classes = useStyles({
-    backgroundImage: `linear-gradient(to top, #423BEB 0%, #6A57F4 30%, #5347EF 50%, rgba(105, 80, 248, 0) 100%), url(${serverHost}/${image})`,
+    backgroundImage: `linear-gradient(to top, #423BEB 0%, #6A57F4 30%, #5347EF 50%, rgba(105, 80, 248, 0) 100%), url(${image})`,
   });
   return (
     <div className={classes.wrapper}>

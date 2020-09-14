@@ -36,6 +36,7 @@ const Auth: React.FC = () => {
                 value={password}
                 setValue={setPassword}
                 placeholder="Пароль"
+                type="password"
               />
             </Grid>
             <Grid item md={3} sm={12}>

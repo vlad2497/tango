@@ -8,9 +8,10 @@ interface IProps {
   placeholder: string;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  type?: string;
 }
 
-const Input: React.FC<IProps> = ({ value, setValue, placeholder }) => {
+const Input: React.FC<IProps> = ({ value, setValue, placeholder, type }) => {
   const classes = useStyles();
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +25,7 @@ const Input: React.FC<IProps> = ({ value, setValue, placeholder }) => {
         onChange={changeHandler}
         name="login"
         placeholder={placeholder}
+        type={type}
       />
     </FormControl>
   );
