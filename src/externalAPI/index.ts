@@ -1,4 +1,4 @@
-export const serverHost = "http://tangonoches.famedev-stage.online";
+export const serverHost = "http://tangonoches.famedev.ru";
 
 export interface IRequestError {
   data: {
