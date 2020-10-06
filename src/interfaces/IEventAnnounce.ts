@@ -4,4 +4,5 @@ export interface IEventAnnounce {
   start_date: string;
   end_date: string;
   image: string | null;
+  extra_info: string | null;
 }

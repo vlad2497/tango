@@ -5,14 +5,19 @@ import {
   SET_TICKETS_LIST,
   SET_TICKETS_LOADING,
   SET_TICKETS_ERROR,
+  SET_POINTS,
 } from "./selectors";
 import { IState } from "./reducer";
-import { getTicketsList as _getTicketsList } from "./../../../externalAPI/tickets/index";
-import { ITicket } from "./../../../interfaces/ITicket";
+import { getStudentInfo as _getStudentInfo } from "./../../../externalAPI/studentInfo/index";
 
 //actions creators
 export const setTicketsList = (payload: IState["list"]) => ({
   type: SET_TICKETS_LIST,
+  payload,
+});
+
+export const setPoints = (payload: IState["points"]) => ({
+  type: SET_POINTS,
   payload,
 });
 
@@ -27,12 +32,13 @@ export const setTicketsError = (payload: IState["error"]) => ({
 });
 
 //thunk
-export const getTicketsList = (): ThunkAction<void, IState, unknown, any> => {
+export const getStudentInfo = (): ThunkAction<void, IState, unknown, any> => {
   return async (dispatch: any) => {
     try {
       dispatch(setTicketsLoading(true));
-      const list: ITicket[] = await _getTicketsList();
-      dispatch(setTicketsList(list));
+      const info = await _getStudentInfo();
+      dispatch(setTicketsList(info.tickets));
+      dispatch(setPoints(info.points));
       dispatch(setTicketsLoading(false));
     } catch (error) {
       alert(error.response.data.message);

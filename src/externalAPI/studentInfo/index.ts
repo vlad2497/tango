@@ -2,19 +2,20 @@ import axios from "axios";
 import { serverHost } from "../index";
 import { ITicket } from "./../../interfaces/ITicket";
 
-interface ITicketsListResponse {
+interface IStudentInfoResponse {
   data: {
-    data: ITicket[];
+    tickets: ITicket[];
+    points: number;
   };
 }
 
-export const getTicketsList = async () => {
-  const response: ITicketsListResponse = await axios.get(
+export const getStudentInfo = async () => {
+  const response: IStudentInfoResponse = await axios.get(
     `${serverHost}/api/student/protected/info`,
     {
       headers: { "Content-Type": "application/json" },
     }
   );
 
-  return response.data.data;
+  return response.data;
 };

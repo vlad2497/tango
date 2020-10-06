@@ -1,10 +1,12 @@
 //Core
-import React from "react";
+import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
-//Custom
+//Interfaces
 import { ILessonAnnounce } from "./../../../../interfaces/ILessonAnnounce";
+//UI
+import { DialogInfo } from "../../../ui";
 //Styles
 import { useStyles } from "./styles";
 
@@ -28,10 +30,26 @@ const getDate = (date: string): string => {
 
 interface IProps extends ILessonAnnounce {}
 
-const Slide: React.FC<IProps> = ({ name, address, start_date, end_date }) => {
+const Slide: React.FC<IProps> = ({
+  name,
+  address,
+  start_date,
+  end_date,
+  extra_info,
+}) => {
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+
   return (
     <div className={classes.wrapper}>
+      {extra_info && (
+        <img
+          src="/images/common/question.svg"
+          className={classes.extraInfoButton}
+          alt="info"
+          onClick={() => setOpenDialog(true)}
+        />
+      )}
       <div className={classes.date}>{getDate(start_date)}</div>
       <div className={classes.time}>{getTime(start_date, end_date)}</div>
       <div className={classes.title}>{name}</div>
@@ -43,6 +61,13 @@ const Slide: React.FC<IProps> = ({ name, address, start_date, end_date }) => {
           <div className={classes.address}>{address}</div>
         </Grid>
       </Grid>
+      <DialogInfo
+        title="Информация"
+        text={extra_info || ""}
+        open={openDialog}
+        setOpen={setOpenDialog}
+        maxWidth="sm"
+      />
     </div>
   );
 };

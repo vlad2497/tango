@@ -6,6 +6,15 @@ export const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: "0px 4px 24px rgba(0, 0, 0, 0.08)",
     borderRadius: 20,
     padding: 24,
+    position: "relative",
+  },
+  extraInfoButton: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   date: {
     fontFamily: "Roboto",

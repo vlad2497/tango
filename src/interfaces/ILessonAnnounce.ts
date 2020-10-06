@@ -3,4 +3,5 @@ export interface ILessonAnnounce {
   address: string;
   start_date: string;
   end_date: string;
+  extra_info: string | null;
 }

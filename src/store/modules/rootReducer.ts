@@ -2,13 +2,13 @@
 import { combineReducers } from "redux";
 import { useSelector as _useSelector, TypedUseSelectorHook } from "react-redux";
 //Custom
-import tickets from "./tickets";
+import studentInfo from "./studentInfo";
 import auth from "./auth";
 import lessonAnnounces from "./lessonAnnounces";
 import eventAnnounces from "./eventAnnounces";
 
 const rootReducer = combineReducers({
-  tickets,
+  studentInfo,
   auth,
   lessonAnnounces,
   eventAnnounces,

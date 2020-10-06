@@ -15,6 +15,14 @@ export const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
     padding: 24,
     position: "relative",
   },
+  extraInfoButton: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
   date: {
     fontFamily: "Roboto",
     fontSize: 14,

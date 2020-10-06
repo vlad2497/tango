@@ -1,9 +1,11 @@
 //Core
-import React from "react";
+import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
-//Custom
+//UI
+import { DialogInfo } from "../../../ui";
+//Interfaces
 import { IEventAnnounce } from "./../../../../interfaces/IEventAnnounce";
 //Styles
 import { useStyles } from "./styles";
@@ -26,12 +28,22 @@ const Slide: React.FC<IProps> = ({
   end_date,
   address,
   image,
+  extra_info,
 }) => {
   const classes = useStyles({
     backgroundImage: `linear-gradient(to top, #423BEB 0%, #6A57F4 30%, #5347EF 50%, rgba(105, 80, 248, 0) 100%), url(${image})`,
   });
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
   return (
     <div className={classes.wrapper}>
+      {extra_info && (
+        <img
+          src="/images/common/question.svg"
+          className={classes.extraInfoButton}
+          alt="info"
+          onClick={() => setOpenDialog(true)}
+        />
+      )}
       <div className={classes.date}>
         {getFormattedDate(start_date, end_date)}
       </div>
@@ -44,6 +56,13 @@ const Slide: React.FC<IProps> = ({
           <div className={classes.address}>{address}</div>
         </Grid>
       </Grid>
+      <DialogInfo
+        title="Информация"
+        text={extra_info || ""}
+        open={openDialog}
+        setOpen={setOpenDialog}
+        maxWidth="sm"
+      />
     </div>
   );
 };
